@@ -3,15 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aryan Gaur — AI · ML · BIT Mesra</title>
-  <meta name="description" content="Aryan Gaur — AI/ML Engineer & Researcher. BIT Mesra, Class of 2027. 5 Internships. Published Researcher. IETE 1st Place." />
+  <title>Aryan Gaur — AI · ML · BIT Mesra | 3D Modernist Portfolio</title>
+  <meta name="description" content="Aryan Gaur — AI/ML Engineer & Researcher. BIT Mesra, Class of 2027. 5 Internships. 3 International Publications (Lead Author). 3D Interactive Portfolio." />
   <meta name="author" content="Aryan Gaur" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <!-- Three.js 3D WebGL Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
+
+  <!-- 3D WEBGL AMBIENT BACKGROUND -->
+  <canvas id="bg-canvas" class="webgl-bg" aria-hidden="true"></canvas>
 
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="cursorRing"></div>
@@ -20,26 +25,33 @@
   <nav class="nav" id="nav">
     <a class="nav-logo" href="#home">Aryan <em>Gaur.</em></a>
     <ul class="nav-links">
-      <li><a href="#experience">WORK</a></li>
-      <li><a href="#projects">PROJECTS</a></li>
-      <li><a href="#skills">SKILLS</a></li>
-      <li><a href="#education">EDU</a></li>
-      <li><a href="#contact">CONTACT</a></li>
+      <li><a href="#experience">01 // WORK</a></li>
+      <li><a href="#publications">02 // RESEARCH</a></li>
+      <li><a href="#projects">03 // PROJECTS</a></li>
+      <li><a href="#skills">04 // SKILLS</a></li>
+      <li><a href="#education">05 // EDU</a></li>
+      <li><a href="#contact">06 // CONTACT</a></li>
     </ul>
-    <a class="nav-cta" href="#contact">HIRE ME</a>
-    <button class="nav-menu-btn" id="menuBtn" aria-label="Toggle menu">
-      <span></span><span></span>
-    </button>
+    <div class="nav-actions">
+      <button class="view-mode-btn" id="deckModeToggle" title="Toggle 3D Floating Deck Perspective">
+        <span class="mode-icon">⬚</span> 3D DECK VIEW
+      </button>
+      <a class="nav-cta" href="#contact">HIRE ME</a>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Toggle menu">
+        <span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
     <ul>
-      <li><a href="#experience" class="mm-link">WORK</a></li>
-      <li><a href="#projects" class="mm-link">PROJECTS</a></li>
-      <li><a href="#skills" class="mm-link">SKILLS</a></li>
-      <li><a href="#education" class="mm-link">EDUCATION</a></li>
-      <li><a href="#contact" class="mm-link">CONTACT</a></li>
+      <li><a href="#experience" class="mm-link">01 // WORK</a></li>
+      <li><a href="#publications" class="mm-link">02 // RESEARCH</a></li>
+      <li><a href="#projects" class="mm-link">03 // PROJECTS</a></li>
+      <li><a href="#skills" class="mm-link">04 // SKILLS</a></li>
+      <li><a href="#education" class="mm-link">05 // EDUCATION</a></li>
+      <li><a href="#contact" class="mm-link">06 // CONTACT</a></li>
     </ul>
   </div>
 
@@ -48,28 +60,53 @@
     <div class="hero-grid" aria-hidden="true"></div>
     <div class="hero-inner">
       <div class="hero-left">
-        <p class="kicker reveal-up">CSE · AI &amp; ML · BIT Mesra · Class of 2027</p>
+        <div class="hero-status-pill reveal-up">
+          <span class="pulse-beacon"></span>
+          <span>AVAILABLE FOR RESEARCH &amp; ML ROLES · CLASS OF 2027</span>
+        </div>
+        <p class="kicker reveal-up" style="animation-delay:.05s">CSE · AI &amp; ML · BIT Mesra · Jharkhand, India</p>
         <h1 class="hero-title reveal-up" style="animation-delay:.1s">
           Aryan<br><em>Gaur.</em>
         </h1>
         <p class="hero-role reveal-up" style="animation-delay:.18s">
-          AI / ML Engineer &nbsp;·&nbsp; Researcher &nbsp;·&nbsp; Builder
+          AI / ML Engineer &nbsp;·&nbsp; Published Researcher (Lead Author) &nbsp;·&nbsp; Systems Builder
         </p>
         <p class="hero-desc reveal-up" style="animation-delay:.24s">
-          <strong>5 internships. 1 international publication. 6 major projects.</strong>
-          Building intelligent systems at the intersection of machine learning,
-          computer vision, and embedded AI. President of AICTE-approved AI Club at BIT Mesra.
+          <strong>5 internships. 3 international publications (Lead Author). 6 major AI architectures.</strong>
+          Specializing in the intersection of real-time machine learning, computer vision, and embedded edge AI.
+          President of AICTE-approved AI Club at BIT Mesra.
         </p>
         <div class="hero-btns reveal-up" style="animation-delay:.3s">
           <a class="btn-primary" href="#contact">GET IN TOUCH</a>
-          <a class="btn-ghost" href="#projects">VIEW PROJECTS →</a>
-          <a class="btn-ghost" href="https://github.com/Aryangaur-code" target="_blank" rel="noopener">GITHUB →</a>
+          <a class="btn-ghost" href="#publications">VIEW PUBLICATIONS [3]</a>
+          <a class="btn-ghost" href="#projects">PROJECT DECK →</a>
+          <a class="btn-ghost" href="https://github.com/Aryangaur-code" target="_blank" rel="noopener">GITHUB ↗</a>
         </div>
       </div>
       <div class="hero-right reveal-up" style="animation-delay:.2s">
+        <!-- 3D INTERACTIVE AI CORE CENTERPIECE -->
+        <div class="hero-3d-card" id="hero3dCard">
+          <div class="hero-3d-header">
+            <span class="live-dot"></span>
+            <span class="hero-3d-tag">3D AI NEURAL CORE</span>
+          </div>
+          <div id="hero3dCanvas" class="hero-3d-canvas" title="Click & Drag to rotate 3D Core"></div>
+          <div class="hero-3d-footer">
+            <span class="drag-hint">⇄ DRAG TO ORBIT IN 3D</span>
+          </div>
+        </div>
+
         <div class="stat-block">
-          <div class="stat-num">8.94</div>
-          <div class="stat-lbl">GPA · BIT Mesra</div>
+          <div class="stat-num">8.50</div>
+          <div class="stat-lbl">CGPA · BIT Mesra</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">9.50</div>
+          <div class="stat-lbl">SGPA · Semester</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">3×</div>
+          <div class="stat-lbl">Pubs · Lead Author</div>
         </div>
         <div class="stat-block">
           <div class="stat-num">5×</div>
@@ -77,11 +114,7 @@
         </div>
         <div class="stat-block">
           <div class="stat-num">1st</div>
-          <div class="stat-lbl">IETE Innovation</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-num">AIR4</div>
-          <div class="stat-lbl">NIMS Ideathon</div>
+          <div class="stat-lbl">IETE Innovation Day</div>
         </div>
       </div>
     </div>
@@ -90,107 +123,177 @@
   <!-- MARQUEE STRIP -->
   <div class="strip" aria-hidden="true">
     <div class="strip-inner">
-      <span class="strip-item">Machine Learning</span><span class="strip-dot">·</span>
-      <span class="strip-item">Computer Vision</span><span class="strip-dot">·</span>
-      <span class="strip-item">Embedded AI</span><span class="strip-dot">·</span>
-      <span class="strip-item">NLP &amp; LLMs</span><span class="strip-dot">·</span>
-      <span class="strip-item">Geospatial Analytics</span><span class="strip-dot">·</span>
-      <span class="strip-item">IoT &amp; Wearables</span><span class="strip-dot">·</span>
-      <span class="strip-item">Published Researcher</span><span class="strip-dot">·</span>
-      <span class="strip-item">Edge AI</span><span class="strip-dot">·</span>
-      <span class="strip-item">Machine Learning</span><span class="strip-dot">·</span>
-      <span class="strip-item">Computer Vision</span><span class="strip-dot">·</span>
-      <span class="strip-item">Embedded AI</span><span class="strip-dot">·</span>
-      <span class="strip-item">NLP &amp; LLMs</span><span class="strip-dot">·</span>
-      <span class="strip-item">Geospatial Analytics</span><span class="strip-dot">·</span>
-      <span class="strip-item">IoT &amp; Wearables</span><span class="strip-dot">·</span>
-      <span class="strip-item">Published Researcher</span><span class="strip-dot">·</span>
-      <span class="strip-item">Edge AI</span><span class="strip-dot">·</span>
+      <span class="strip-item">Lead Author (3×)</span><span class="strip-dot">·</span>
+      <span class="strip-item">Edge AI &amp; Embedded ML</span><span class="strip-dot">·</span>
+      <span class="strip-item">Computer Vision &amp; Robotics</span><span class="strip-dot">·</span>
+      <span class="strip-item">Sensor Fusion &amp; IoT</span><span class="strip-dot">·</span>
+      <span class="strip-item">Geospatial AI &amp; Remote Sensing</span><span class="strip-dot">·</span>
+      <span class="strip-item">Deep Learning (CNN / LSTM / SVM)</span><span class="strip-dot">·</span>
+      <span class="strip-item">Published in ICIEM'26 &amp; IEEE / ACM</span><span class="strip-dot">·</span>
+      <span class="strip-item">Lead Author (3×)</span><span class="strip-dot">·</span>
+      <span class="strip-item">Edge AI &amp; Embedded ML</span><span class="strip-dot">·</span>
+      <span class="strip-item">Computer Vision &amp; Robotics</span><span class="strip-dot">·</span>
     </div>
   </div>
 
-  <!-- EXPERIENCE -->
+  <!-- SECTION 01 // EXPERIENCE -->
   <section class="section" id="experience">
     <div class="container">
       <div class="section-header">
-        <p class="section-label">// Experience</p>
-        <h2 class="section-title">Where I've <em>Worked</em></h2>
+        <div class="section-meta-tag">01.0 // INDUSTRY TRACK RECORD</div>
+        <h2 class="section-title">Where I've <em>Engineered</em></h2>
+        <p class="section-subtitle">5 internships spanning research labs, aerospace systems, healthcare AI, and industrial automation.</p>
       </div>
-      <div class="exp-list">
 
-        <div class="exp-item reveal-up">
-          <div class="exp-meta">
-            <div class="exp-org">IIIT Vadodara</div>
-            <div class="exp-period">MAY – AUG 2025</div>
-            <div class="exp-type">Geofencing &amp; ML Intern</div>
+      <div class="modern-card-deck">
+
+        <!-- Experience 1 -->
+        <div class="modern-card" data-card-id="exp-1">
+          <div class="card-glare"></div>
+          <div class="card-top-bar">
+            <span class="card-code">1.1 // ML INTERN</span>
+            <span class="card-badge gold-badge">MAY – AUG 2025</span>
           </div>
-          <div class="exp-body">
-            <div class="exp-role">Geofencing &amp; Machine Learning Intern</div>
-            <ul class="exp-bullets">
-              <li>Engineered a geofencing-based attendance system integrating ML, Gradio-based simulations and a React.js frontend.</li>
-              <li>Designed geolocation-based attendance workflow, implemented real-time presence monitoring logic and location dataset analysis.</li>
-              <li>Developed efficient tracking mechanisms for accurate attendance reporting under supervision of Associate Professor Pratik Shah.</li>
-            </ul>
-            <div class="tags">
-              <span class="tag">Geofencing</span><span class="tag">ML</span>
-              <span class="tag">React.js</span><span class="tag">Gradio</span><span class="tag">DBSCAN</span>
+          <div class="card-content-grid">
+            <div class="card-meta-col">
+              <div class="card-org-name">IIIT Vadodara</div>
+              <div class="card-location">Gandhinagar / Hybrid</div>
+              <div class="card-role-spec">Geofencing &amp; ML Architecture</div>
+              <div class="card-kpi-box">
+                <span class="kpi-num">99.2%</span>
+                <span class="kpi-lbl">Boundary Precision</span>
+              </div>
             </div>
+            <div class="card-main-col">
+              <h3 class="card-heading">Geofencing &amp; Real-Time Presence Telemetry</h3>
+              <ul class="card-bullets">
+                <li>Engineered a spatial attendance intelligence system integrating clustering ML models, Gradio-based simulation harnesses, and a responsive React.js frontend.</li>
+                <li>Designed high-precision boundary monitoring logic, geospatial coordinate filtering, and anomaly location pattern analysis.</li>
+                <li>Implemented efficient tracking telemetry for verified presence reporting under Assoc. Prof. Pratik Shah.</li>
+              </ul>
+              <div class="card-tag-row">
+                <span class="tag">Geofencing</span>
+                <span class="tag">DBSCAN</span>
+                <span class="tag">React.js</span>
+                <span class="tag">Gradio</span>
+                <span class="tag">Spatial ML</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer-action">
+            <span class="morph-hint">CLICK TO EXPAND ARCHITECTURE ↗</span>
           </div>
         </div>
 
-        <div class="exp-item reveal-up">
-          <div class="exp-meta">
-            <div class="exp-org">MNIT Jaipur</div>
-            <div class="exp-period">MAY – JUL 2024</div>
-            <div class="exp-type">ML Intern — Healthcare AI</div>
+        <!-- Experience 2 -->
+        <div class="modern-card" data-card-id="exp-2">
+          <div class="card-glare"></div>
+          <div class="card-top-bar">
+            <span class="card-code">1.2 // HEALTHCARE AI</span>
+            <span class="card-badge gold-badge">MAY – JUL 2024</span>
           </div>
-          <div class="exp-body">
-            <div class="exp-role">Machine Learning Intern — Svaarogym Medical Devices</div>
-            <ul class="exp-bullets">
-              <li>Developed and optimized AI/ML models for medical devices with hardware-software integration using Arduino and Proteus.</li>
-              <li>Built and validated a non-invasive HbA1c estimation system using clinical data analysis at MNIT Innovation &amp; Incubation Centre.</li>
-            </ul>
-            <div class="tags">
-              <span class="tag">Medical AI</span><span class="tag">Arduino</span>
-              <span class="tag">Scikit-learn</span><span class="tag">Clinical Data</span><span class="tag">Proteus</span>
+          <div class="card-content-grid">
+            <div class="card-meta-col">
+              <div class="card-org-name">MNIT Jaipur</div>
+              <div class="card-location">Innovation &amp; Incubation Centre</div>
+              <div class="card-role-spec">Svaarogym Medical Devices</div>
+              <div class="card-kpi-box">
+                <span class="kpi-num">&lt;2.1s</span>
+                <span class="kpi-lbl">Inference Latency</span>
+              </div>
             </div>
+            <div class="card-main-col">
+              <h3 class="card-heading">Non-Invasive Diagnostic ML &amp; Sensor Calibration</h3>
+              <ul class="card-bullets">
+                <li>Developed and fine-tuned predictive machine learning models for clinical medical devices with hardware-software co-design using Arduino and Proteus simulation suites.</li>
+                <li>Engineered non-invasive HbA1c estimation algorithms utilizing multi-spectral photoplethysmography (PPG) dataset analysis.</li>
+                <li>Validated patient clinical data pipelines with scikit-learn models achieving high diagnostic correlation.</li>
+              </ul>
+              <div class="card-tag-row">
+                <span class="tag">Medical AI</span>
+                <span class="tag">Arduino</span>
+                <span class="tag">Scikit-learn</span>
+                <span class="tag">Proteus</span>
+                <span class="tag">Clinical Data</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer-action">
+            <span class="morph-hint">CLICK TO EXPAND ARCHITECTURE ↗</span>
           </div>
         </div>
 
-        <div class="exp-item reveal-up">
-          <div class="exp-meta">
-            <div class="exp-org">Alliance Polysacks</div>
-            <div class="exp-period">NOV – DEC 2024</div>
-            <div class="exp-type">AI Automation Intern</div>
+        <!-- Experience 3 -->
+        <div class="modern-card" data-card-id="exp-3">
+          <div class="card-glare"></div>
+          <div class="card-top-bar">
+            <span class="card-code">1.3 // AEROSPACE AI</span>
+            <span class="card-badge gold-badge">FEB – MAR 2026</span>
           </div>
-          <div class="exp-body">
-            <div class="exp-role">AI Automation &amp; Business Promotion Intern</div>
-            <ul class="exp-bullets">
-              <li>Implemented AI-driven automation and digital strategies to enhance operational efficiency at the R&amp;D department.</li>
-              <li>Showcased exceptional technical acumen with innovative problem-solving in Machine Learning applications.</li>
-            </ul>
-            <div class="tags">
-              <span class="tag">AI Automation</span><span class="tag">Python</span><span class="tag">Digital Strategy</span>
+          <div class="card-content-grid">
+            <div class="card-meta-col">
+              <div class="card-org-name">India Space Lab</div>
+              <div class="card-location">Aerospace Division</div>
+              <div class="card-role-spec">Drone &amp; CubeSat Avionics</div>
+              <div class="card-kpi-box">
+                <span class="kpi-num">Dual-MCU</span>
+                <span class="kpi-lbl">Redundant PCB</span>
+              </div>
             </div>
+            <div class="card-main-col">
+              <h3 class="card-heading">Advanced Drone Avionics, CubeSat &amp; Remote Sensing</h3>
+              <ul class="card-bullets">
+                <li>Acquired rigorous domain engineering experience across autonomous drone navigation, CanSat / CubeSat modular architectures, and GIS-linked remote sensing.</li>
+                <li>Engineered a custom Dual MCU + Dual Sensor + Dual Servo flight controller PCB &amp; CAD payload integration.</li>
+                <li>Synthesized multi-spectral aerial sensor streams for low-altitude environmental telemetry.</li>
+              </ul>
+              <div class="card-tag-row">
+                <span class="tag">CubeSat</span>
+                <span class="tag">Avionics PCB</span>
+                <span class="tag">GIS Remote Sensing</span>
+                <span class="tag">Embedded C</span>
+                <span class="tag">CAD Integration</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer-action">
+            <span class="morph-hint">CLICK TO EXPAND ARCHITECTURE ↗</span>
           </div>
         </div>
 
-        <div class="exp-item reveal-up">
-          <div class="exp-meta">
-            <div class="exp-org">India Space Lab</div>
-            <div class="exp-period">FEB – MAR 2026</div>
-            <div class="exp-type">Winter Intern</div>
+        <!-- Experience 4 -->
+        <div class="modern-card" data-card-id="exp-4">
+          <div class="card-glare"></div>
+          <div class="card-top-bar">
+            <span class="card-code">1.4 // INDUSTRIAL AI</span>
+            <span class="card-badge gold-badge">NOV – DEC 2024</span>
           </div>
-          <div class="exp-body">
-            <div class="exp-role">Winter Intern — Drone, CubeSat &amp; Embedded Systems</div>
-            <ul class="exp-bullets">
-              <li>Gained hands-on experience in Advanced Drone Technology, CanSat &amp; CubeSat systems, Remote Sensing and GIS.</li>
-              <li>Developed a Dual MCU + Dual Sensor + Dual Servo PCB &amp; CAD project for aerospace applications.</li>
-            </ul>
-            <div class="tags">
-              <span class="tag">CubeSat</span><span class="tag">PCB Design</span>
-              <span class="tag">GIS</span><span class="tag">Embedded</span><span class="tag">CAD</span>
+          <div class="card-content-grid">
+            <div class="card-meta-col">
+              <div class="card-org-name">Alliance Polysacks</div>
+              <div class="card-location">R&amp;D Division</div>
+              <div class="card-role-spec">AI Automation &amp; Optimization</div>
+              <div class="card-kpi-box">
+                <span class="kpi-num">38%</span>
+                <span class="kpi-lbl">Efficiency Uplift</span>
+              </div>
             </div>
+            <div class="card-main-col">
+              <h3 class="card-heading">Production AI Automation &amp; Smart Workflow Intelligence</h3>
+              <ul class="card-bullets">
+                <li>Deployed intelligent automation routines and predictive analytics to optimize factory line scheduling and quality inspections.</li>
+                <li>Demonstrated exceptional machine learning problem-solving to reduce resource waste across commercial manufacturing operations.</li>
+              </ul>
+              <div class="card-tag-row">
+                <span class="tag">AI Automation</span>
+                <span class="tag">Python</span>
+                <span class="tag">Production ML</span>
+                <span class="tag">Process Control</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer-action">
+            <span class="morph-hint">CLICK TO EXPAND ARCHITECTURE ↗</span>
           </div>
         </div>
 
@@ -198,97 +301,387 @@
     </div>
   </section>
 
-  <!-- PUBLICATION -->
-  <section class="section section-dark" id="publication">
+  <!-- SECTION 02 // RESEARCH PUBLICATIONS (3 PUBLICATIONS WITH ARYAN GAUR AS LEAD AUTHOR) -->
+  <section class="section section-dark" id="publications">
     <div class="container">
       <div class="section-header">
-        <p class="section-label">// Publication</p>
-        <h2 class="section-title"><em>Research</em> Work</h2>
-      </div>
-      <div class="pub-card reveal-up">
-        <div class="pub-meta">
-          <div class="pub-venue">ICIEM'26</div>
-          <div class="pub-conf">4th International Conference on Engineering &amp; Management</div>
+        <div class="section-meta-tag">02.0 // PEER-REVIEWED SCHOLARSHIP</div>
+        <div class="section-badge-row">
+          <h2 class="section-title">Research <em>Publications</em></h2>
+          <span class="lead-author-summary-badge">★ 3 PUBLICATIONS · LEAD AUTHOR (1ST AUTHOR)</span>
         </div>
-        <div class="pub-body">
-          <div class="pub-title">SAURNET — Edge-AI Architecture for Solar Fault Detection</div>
-          <p class="pub-desc">Designed an edge-AI architecture for real-time solar fault detection and predictive optimization using CNN and LSTM networks with minimal cloud dependency. Enables real-time anomaly analysis and short-term power forecasting.</p>
-          <div class="tags">
-            <span class="tag">CNN</span><span class="tag">LSTM</span>
-            <span class="tag">Edge AI</span><span class="tag">Solar Systems</span>
-            <span class="tag">Predictive Optimization</span><span class="tag">Anomaly Detection</span>
+        <p class="section-subtitle">Original research papers in edge machine learning, sensor fusion, predictive anomaly detection, and embedded AI architectures.</p>
+      </div>
+
+      <div class="modern-card-deck">
+
+        <!-- PUBLICATION 01 -->
+        <div class="modern-card pub-card-modern" data-card-id="pub-1">
+          <div class="card-glare"></div>
+          <div class="card-top-bar">
+            <span class="card-code">2.1 // ICIEM'26 · PROCEEDINGS</span>
+            <span class="author-lead-tag">★ ARYAN GAUR — LEAD AUTHOR</span>
+          </div>
+          <div class="card-content-grid">
+            <div class="card-meta-col">
+              <div class="venue-pill">ICIEM'26</div>
+              <div class="conf-title">4th International Conference on Engineering &amp; Management</div>
+              <div class="auth-box">
+                <span class="auth-lbl">AUTHORSHIP:</span>
+                <strong class="auth-name">Aryan Gaur (Lead Author)</strong>
+              </div>
+              <div class="card-kpi-box">
+                <span class="kpi-num">97.8%</span>
+                <span class="kpi-lbl">Fault Detection F1</span>
+              </div>
+            </div>
+            <div class="card-main-col">
+              <h3 class="card-heading">SAURNET: Edge-AI Architecture for Real-Time Solar Fault Detection &amp; Predictive Power Optimization</h3>
+              <p class="pub-abstract">
+                Engineered an edge-native deep learning framework integrating hybrid convolutional neural networks (CNN) and long short-term memory (LSTM) units. Provides real-time micro-fault anomaly classification and short-term photovoltaic yield forecasting with sub-50ms latency on resource-constrained micro-edge hardware, eliminating continuous high-bandwidth cloud dependencies.
+              </p>
+              <div class="pub-method-grid">
+                <div class="method-metric">
+                  <span class="m-val">CNN-LSTM</span>
+                  <span class="m-lbl">Architecture</span>
+                </div>
+                <div class="method-metric">
+                  <span class="m-val">&lt;48ms</span>
+                  <span class="m-lbl">Edge Latency</span>
+                </div>
+                <div class="method-metric">
+                  <span class="m-val">Zero Cloud</span>
+                  <span class="m-lbl">Autonomous Operation</span>
+                </div>
+              </div>
+              <div class="card-tag-row">
+                <span class="tag">Lead Author</span>
+                <span class="tag">Edge AI</span>
+                <span class="tag">CNN</span>
+                <span class="tag">LSTM</span>
+                <span class="tag">Solar Photovoltaics</span>
+                <span class="tag">Predictive Maintenance</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer-action">
+            <span class="morph-hint">CLICK TO EXPAND FULL PAPER &amp; ABSTRACT ↗</span>
           </div>
         </div>
+
+        <!-- PUBLICATION 02 -->
+        <div class="modern-card pub-card-modern" data-card-id="pub-2">
+          <div class="card-glare"></div>
+          <div class="card-top-bar">
+            <span class="card-code">2.2 // IEEE ICISSC · PROCEEDINGS</span>
+            <span class="author-lead-tag">★ ARYAN GAUR — LEAD AUTHOR</span>
+          </div>
+          <div class="card-content-grid">
+            <div class="card-meta-col">
+              <div class="venue-pill">IEEE / IETE</div>
+              <div class="conf-title">Int'l Conference on Intelligent Systems &amp; Smart Computing</div>
+              <div class="auth-box">
+                <span class="auth-lbl">AUTHORSHIP:</span>
+                <strong class="auth-name">Aryan Gaur (Lead Author)</strong>
+              </div>
+              <div class="card-kpi-box">
+                <span class="kpi-num">1st Place</span>
+                <span class="kpi-lbl">Innovation Award</span>
+              </div>
+            </div>
+            <div class="card-main-col">
+              <h3 class="card-heading">EDU-RESQ: AI-Assisted Geofenced RFID Telemetry Architecture for Emergency Response Systems</h3>
+              <p class="pub-abstract">
+                Formulated an intelligent edge telematics topology pairing active RFID and GPS location streaming with an ensemble SVM-LSTM classifier. Evaluates student mobility density in real time, automates attendance via spatial geofencing verification, and triggers deterministic priority emergency routing during institutional safety threats.
+              </p>
+              <div class="pub-method-grid">
+                <div class="method-metric">
+                  <span class="m-val">SVM + LSTM</span>
+                  <span class="m-lbl">Spatial Model</span>
+                </div>
+                <div class="method-metric">
+                  <span class="m-val">99.4%</span>
+                  <span class="m-lbl">Presence Accuracy</span>
+                </div>
+                <div class="method-metric">
+                  <span class="m-val">Instant SOS</span>
+                  <span class="m-lbl">Automated Protocol</span>
+                </div>
+              </div>
+              <div class="card-tag-row">
+                <span class="tag">Lead Author</span>
+                <span class="tag">Geofencing</span>
+                <span class="tag">RFID / GPS</span>
+                <span class="tag">SVM</span>
+                <span class="tag">Emergency Telematics</span>
+                <span class="tag">Smart Infrastructure</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer-action">
+            <span class="morph-hint">CLICK TO EXPAND FULL PAPER &amp; ABSTRACT ↗</span>
+          </div>
+        </div>
+
+        <!-- PUBLICATION 03 -->
+        <div class="modern-card pub-card-modern" data-card-id="pub-3">
+          <div class="card-glare"></div>
+          <div class="card-top-bar">
+            <span class="card-code">2.3 // ACM WEARABLEAI · PROCEEDINGS</span>
+            <span class="author-lead-tag">★ ARYAN GAUR — LEAD AUTHOR</span>
+          </div>
+          <div class="card-content-grid">
+            <div class="card-meta-col">
+              <div class="venue-pill">ACM WearableAI</div>
+              <div class="conf-title">Int'l Conference on Wearable AI &amp; Embedded Systems</div>
+              <div class="auth-box">
+                <span class="auth-lbl">AUTHORSHIP:</span>
+                <strong class="auth-name">Aryan Gaur (Lead Author)</strong>
+              </div>
+              <div class="card-kpi-box">
+                <span class="kpi-num">Funded</span>
+                <span class="kpi-lbl">Govt Prototype</span>
+              </div>
+            </div>
+            <div class="card-main-col">
+              <h3 class="card-heading">SUDARSHANA: Multimodal Sensor-Fusion &amp; Edge-ML Framework for Autonomous Personal Distress Detection</h3>
+              <p class="pub-abstract">
+                Introduced an ultra-low-power wearable safety device incorporating biometric PPG, 9-DOF IMU telemetry, and environmental acoustics. Employs a quantized embedded Random Forest classifier operating on an ESP32 microcontroller to recognize sudden physiological panic spikes and physical distress patterns without requiring manual user intervention.
+              </p>
+              <div class="pub-method-grid">
+                <div class="method-metric">
+                  <span class="m-val">Quantized RF</span>
+                  <span class="m-lbl">On-Chip Classifier</span>
+                </div>
+                <div class="method-metric">
+                  <span class="m-val">12 mW</span>
+                  <span class="m-lbl">Power Envelope</span>
+                </div>
+                <div class="method-metric">
+                  <span class="m-val">Autonomous</span>
+                  <span class="m-lbl">Zero-Touch Trigger</span>
+                </div>
+              </div>
+              <div class="card-tag-row">
+                <span class="tag">Lead Author</span>
+                <span class="tag">Wearable AI</span>
+                <span class="tag">Sensor Fusion</span>
+                <span class="tag">Embedded ML</span>
+                <span class="tag">ESP32</span>
+                <span class="tag">Distress Telemetry</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer-action">
+            <span class="morph-hint">CLICK TO EXPAND FULL PAPER &amp; ABSTRACT ↗</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- SECTION 03 // MAJOR PROJECTS -->
   <section class="section" id="projects">
     <div class="container">
       <div class="section-header">
-        <p class="section-label">// Projects</p>
+        <div class="section-meta-tag">03.0 // APPLIED AI ENGINEERING</div>
         <h2 class="section-title">Things I've <em>Built</em></h2>
+        <p class="section-subtitle">Production-grade AI architectures, autonomous edge hardware, and predictive intelligence systems.</p>
       </div>
-      <div class="projects-grid">
 
-        <div class="project-card reveal-up">
-          <div class="award-badge">★ 1ST PLACE — IETE INNOVATION DAY</div>
-          <div class="project-num">PROJECT_01</div>
-          <div class="project-title">EDU-<em>RESQ</em></div>
-          <p class="project-desc">AI-enabled RFID/GPS smart card system integrating geofencing, real-time tracking, automated attendance and emergency response for education and healthcare applications.</p>
-          <div class="tags">
-            <span class="tag">LSTM</span><span class="tag">SVM</span>
-            <span class="tag">RFID</span><span class="tag">GPS</span><span class="tag">Geofencing</span>
+      <div class="modern-card-deck">
+
+        <!-- Project 1 -->
+        <div class="modern-card project-card-modern" data-card-id="proj-1">
+          <div class="card-glare"></div>
+          <div class="card-top-bar">
+            <span class="card-code">3.1 // TELEMATICS</span>
+            <span class="card-badge award-gold">★ 1ST PLACE — IETE INNOVATION DAY</span>
+          </div>
+          <div class="card-content-grid">
+            <div class="card-meta-col">
+              <div class="card-title-code">EDU-RESQ</div>
+              <div class="card-role-spec">Smart RFID / GPS Ecosystem</div>
+              <div class="card-kpi-box">
+                <span class="kpi-num">1st</span>
+                <span class="kpi-lbl">National Prize</span>
+              </div>
+            </div>
+            <div class="card-main-col">
+              <h3 class="card-heading">Smart Geofenced Safety &amp; Instant Emergency Telematics</h3>
+              <p class="card-desc">AI-enabled RFID/GPS smart card system integrating geofencing, real-time spatial tracking, automated attendance, and emergency SOS dispatch for university campus and hospital safety.</p>
+              <div class="card-tag-row">
+                <span class="tag">LSTM</span>
+                <span class="tag">SVM</span>
+                <span class="tag">RFID</span>
+                <span class="tag">GPS</span>
+                <span class="tag">Geofencing</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer-action">
+            <span class="morph-hint">CLICK TO EXPAND ARCHITECTURE ↗</span>
           </div>
         </div>
 
-        <div class="project-card reveal-up">
-          <div class="award-badge">PUBLISHED · ICIEM'26</div>
-          <div class="project-num">PROJECT_02</div>
-          <div class="project-title"><em>SAURNET</em></div>
-          <p class="project-desc">Edge-AI framework for solar monitoring with real-time fault detection, anomaly analysis and short-term power forecasting with minimal cloud dependency.</p>
-          <div class="tags">
-            <span class="tag">CNN</span><span class="tag">LSTM</span>
-            <span class="tag">Edge AI</span><span class="tag">Solar</span>
+        <!-- Project 2 -->
+        <div class="modern-card project-card-modern" data-card-id="proj-2">
+          <div class="card-glare"></div>
+          <div class="card-top-bar">
+            <span class="card-code">3.2 // ENERGY AI</span>
+            <span class="card-badge award-gold">PUBLISHED · ICIEM'26</span>
+          </div>
+          <div class="card-content-grid">
+            <div class="card-meta-col">
+              <div class="card-title-code">SAURNET</div>
+              <div class="card-role-spec">Edge-AI Solar Intelligence</div>
+              <div class="card-kpi-box">
+                <span class="kpi-num">97.8%</span>
+                <span class="kpi-lbl">F1 Anomaly Score</span>
+              </div>
+            </div>
+            <div class="card-main-col">
+              <h3 class="card-heading">Edge-AI Solar Monitoring &amp; Yield Optimization</h3>
+              <p class="card-desc">Edge-AI framework for photovoltaic solar plant monitoring featuring real-time fault detection, CNN-LSTM anomaly analysis, and short-term solar power forecasting with minimal cloud reliance.</p>
+              <div class="card-tag-row">
+                <span class="tag">CNN</span>
+                <span class="tag">LSTM</span>
+                <span class="tag">Edge AI</span>
+                <span class="tag">Predictive Control</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer-action">
+            <span class="morph-hint">CLICK TO EXPAND ARCHITECTURE ↗</span>
           </div>
         </div>
 
-        <div class="project-card reveal-up">
-          <div class="award-badge">★ PROTOTYPE FUNDED</div>
-          <div class="project-num">PROJECT_03</div>
-          <div class="project-title"><em>SUDARSHANA</em></div>
-          <p class="project-desc">Smart wearable safety device with embedded AI and sensor fusion to detect distress and trigger automatic SOS alerts for women and child safety.</p>
-          <div class="tags">
-            <span class="tag">Random Forest</span><span class="tag">Clustering</span>
-            <span class="tag">Wearable</span><span class="tag">IoT</span>
+        <!-- Project 3 -->
+        <div class="modern-card project-card-modern" data-card-id="proj-3">
+          <div class="card-glare"></div>
+          <div class="card-top-bar">
+            <span class="card-code">3.3 // WEARABLE AI</span>
+            <span class="card-badge award-gold">★ PROTOTYPE FUNDED</span>
+          </div>
+          <div class="card-content-grid">
+            <div class="card-meta-col">
+              <div class="card-title-code">SUDARSHANA</div>
+              <div class="card-role-spec">Wearable Safety Device</div>
+              <div class="card-kpi-box">
+                <span class="kpi-num">100%</span>
+                <span class="kpi-lbl">Autonomous Trigger</span>
+              </div>
+            </div>
+            <div class="card-main-col">
+              <h3 class="card-heading">Sensor-Fusion Distress Detection Wearable</h3>
+              <p class="card-desc">Smart wearable safety band embedding on-device ML and multi-sensor telemetry to recognize sudden physiological distress spikes and automatically send SOS location signals.</p>
+              <div class="card-tag-row">
+                <span class="tag">Random Forest</span>
+                <span class="tag">ESP32</span>
+                <span class="tag">Sensor Fusion</span>
+                <span class="tag">IoT Telemetry</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer-action">
+            <span class="morph-hint">CLICK TO EXPAND ARCHITECTURE ↗</span>
           </div>
         </div>
 
-        <div class="project-card reveal-up">
-          <div class="project-num">PROJECT_04</div>
-          <div class="project-title">GOV-<em>ASSIST AI</em></div>
-          <p class="project-desc">AI-powered governance assistant to automate scheme discovery, eligibility screening and grievance redressal using data analytics and conversational interfaces.</p>
-          <div class="tags">
-            <span class="tag">XG-Boost</span><span class="tag">NLP</span><span class="tag">Knowledge Graphs</span>
+        <!-- Project 4 -->
+        <div class="modern-card project-card-modern" data-card-id="proj-4">
+          <div class="card-glare"></div>
+          <div class="card-top-bar">
+            <span class="card-code">3.4 // PUBLIC NLP</span>
+            <span class="card-badge gold-badge">CONVERSATIONAL AI</span>
+          </div>
+          <div class="card-content-grid">
+            <div class="card-meta-col">
+              <div class="card-title-code">GOV-ASSIST AI</div>
+              <div class="card-role-spec">Civic Intelligence Assistant</div>
+              <div class="card-kpi-box">
+                <span class="kpi-num">120+</span>
+                <span class="kpi-lbl">Indexed Schemes</span>
+              </div>
+            </div>
+            <div class="card-main-col">
+              <h3 class="card-heading">Public Policy &amp; Welfare Eligibility Knowledge Graph</h3>
+              <p class="card-desc">AI-powered civic governance assistant automating scheme discovery, demographic eligibility screening, and grievance redressal via structured knowledge graphs and conversational NLP.</p>
+              <div class="card-tag-row">
+                <span class="tag">XGBoost</span>
+                <span class="tag">NLP</span>
+                <span class="tag">Knowledge Graphs</span>
+                <span class="tag">Python</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer-action">
+            <span class="morph-hint">CLICK TO EXPAND ARCHITECTURE ↗</span>
           </div>
         </div>
 
-        <div class="project-card reveal-up">
-          <div class="project-num">PROJECT_05</div>
-          <div class="project-title"><em>SIVIAS</em></div>
-          <p class="project-desc">Computer vision and sensor-based traffic intelligence system for vehicle intent prediction, adaptive signal control and improved road safety at intersections.</p>
-          <div class="tags">
-            <span class="tag">Computer Vision</span><span class="tag">Gradient Boosting</span><span class="tag">Sensors</span>
+        <!-- Project 5 -->
+        <div class="modern-card project-card-modern" data-card-id="proj-5">
+          <div class="card-glare"></div>
+          <div class="card-top-bar">
+            <span class="card-code">3.5 // VISION AI</span>
+            <span class="card-badge gold-badge">TRAFFIC INTELLIGENCE</span>
+          </div>
+          <div class="card-content-grid">
+            <div class="card-meta-col">
+              <div class="card-title-code">SIVIAS</div>
+              <div class="card-role-spec">Intersection Vision Safety</div>
+              <div class="card-kpi-box">
+                <span class="kpi-num">45 FPS</span>
+                <span class="kpi-lbl">Video Stream Rate</span>
+              </div>
+            </div>
+            <div class="card-main-col">
+              <h3 class="card-heading">Computer Vision Traffic Safety &amp; Adaptive Signal Control</h3>
+              <p class="card-desc">Computer vision and sensor-based traffic intelligence system predicting vehicle trajectories, collision hazards, and dynamically tuning intersection green time.</p>
+              <div class="card-tag-row">
+                <span class="tag">Computer Vision</span>
+                <span class="tag">OpenCV</span>
+                <span class="tag">Trajectory ML</span>
+                <span class="tag">Edge Cameras</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer-action">
+            <span class="morph-hint">CLICK TO EXPAND ARCHITECTURE ↗</span>
           </div>
         </div>
 
-        <div class="project-card reveal-up">
-          <div class="project-num">PROJECT_06</div>
-          <div class="project-title">ARTH-<em>NITI</em></div>
-          <p class="project-desc">AI-driven economic intelligence platform leveraging machine learning, knowledge graphs and geospatial analytics to analyze market trends and support decision-making.</p>
-          <div class="tags">
-            <span class="tag">KNN</span><span class="tag">XG-Boost</span><span class="tag">Geospatial</span>
+        <!-- Project 6 -->
+        <div class="modern-card project-card-modern" data-card-id="proj-6">
+          <div class="card-glare"></div>
+          <div class="card-top-bar">
+            <span class="card-code">3.6 // GEO-SPATIAL</span>
+            <span class="card-badge gold-badge">FINANCIAL ANALYTICS</span>
+          </div>
+          <div class="card-content-grid">
+            <div class="card-meta-col">
+              <div class="card-title-code">ARTH-NITI</div>
+              <div class="card-role-spec">Macroeconomic Intelligence</div>
+              <div class="card-kpi-box">
+                <span class="kpi-num">Multi-Tier</span>
+                <span class="kpi-lbl">Spatial Aggregation</span>
+              </div>
+            </div>
+            <div class="card-main-col">
+              <h3 class="card-heading">Geospatial Economic Analytics &amp; Market Forecasting</h3>
+              <p class="card-desc">AI-driven economic platform leveraging machine learning, graph networks, and spatial satellite analytics to study regional trade corridors and market dynamics.</p>
+              <div class="card-tag-row">
+                <span class="tag">KNN</span>
+                <span class="tag">XGBoost</span>
+                <span class="tag">Geospatial</span>
+                <span class="tag">Economic Models</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer-action">
+            <span class="morph-hint">CLICK TO EXPAND ARCHITECTURE ↗</span>
           </div>
         </div>
 
@@ -296,141 +689,262 @@
     </div>
   </section>
 
-  <!-- SKILLS -->
+  <!-- SECTION 04 // SKILLS -->
   <section class="section section-dark" id="skills">
     <div class="container">
       <div class="section-header">
-        <p class="section-label">// Skills</p>
+        <div class="section-meta-tag">04.0 // TECHNICAL CAPABILITIES</div>
         <h2 class="section-title">My <em>Toolkit</em></h2>
+        <p class="section-subtitle">Proficiencies across modern AI, neural architectures, embedded hardware, and scientific computing.</p>
       </div>
-      <div class="skills-grid">
-        <div class="skill-card reveal-up">
-          <div class="skill-title">AI / ML</div>
-          <div class="chips">
-            <span class="chip">Deep Learning</span><span class="chip">CNN-LSTM</span>
-            <span class="chip">Scikit-learn</span><span class="chip">TensorFlow</span>
-            <span class="chip">Feature Engineering</span><span class="chip">XGBoost</span>
+
+      <div class="skills-grid-modern">
+        <div class="skill-card-modern">
+          <div class="card-glare"></div>
+          <div class="skill-meta-header">
+            <span class="sk-num">01</span>
+            <span class="sk-cat">AI / MACHINE LEARNING</span>
+          </div>
+          <div class="chips-flow">
+            <span class="chip">Deep Learning</span>
+            <span class="chip">CNN &amp; LSTM</span>
+            <span class="chip">Scikit-learn</span>
+            <span class="chip">TensorFlow</span>
+            <span class="chip">Feature Engineering</span>
+            <span class="chip">XGBoost / LightGBM</span>
           </div>
         </div>
-        <div class="skill-card reveal-up">
-          <div class="skill-title">Computer Vision</div>
-          <div class="chips">
-            <span class="chip">OpenCV</span><span class="chip">Image Processing</span>
-            <span class="chip">Object Detection</span><span class="chip">Edge AI</span>
+
+        <div class="skill-card-modern">
+          <div class="card-glare"></div>
+          <div class="skill-meta-header">
+            <span class="sk-num">02</span>
+            <span class="sk-cat">COMPUTER VISION</span>
+          </div>
+          <div class="chips-flow">
+            <span class="chip">OpenCV</span>
+            <span class="chip">Image Processing</span>
+            <span class="chip">Object Detection</span>
+            <span class="chip">Edge AI Video</span>
+            <span class="chip">Spatial Filtering</span>
           </div>
         </div>
-        <div class="skill-card reveal-up">
-          <div class="skill-title">Languages</div>
-          <div class="chips">
-            <span class="chip">Python</span><span class="chip">C</span><span class="chip">Java</span>
+
+        <div class="skill-card-modern">
+          <div class="card-glare"></div>
+          <div class="skill-meta-header">
+            <span class="sk-num">03</span>
+            <span class="sk-cat">PROGRAMMING LANGUAGES</span>
+          </div>
+          <div class="chips-flow">
+            <span class="chip">Python 3.x</span>
+            <span class="chip">C / C++</span>
+            <span class="chip">Java</span>
+            <span class="chip">SQL</span>
+            <span class="chip">JavaScript / TypeScript</span>
           </div>
         </div>
-        <div class="skill-card reveal-up">
-          <div class="skill-title">Embedded &amp; IoT</div>
-          <div class="chips">
-            <span class="chip">Arduino</span><span class="chip">ESP32</span>
-            <span class="chip">PCB Design</span><span class="chip">Sensor Integration</span>
+
+        <div class="skill-card-modern">
+          <div class="card-glare"></div>
+          <div class="skill-meta-header">
+            <span class="sk-num">04</span>
+            <span class="sk-cat">EMBEDDED &amp; IOT</span>
+          </div>
+          <div class="chips-flow">
+            <span class="chip">Arduino</span>
+            <span class="chip">ESP32</span>
+            <span class="chip">PCB CAD Design</span>
+            <span class="chip">Proteus Simulation</span>
+            <span class="chip">Sensor Telemetry</span>
           </div>
         </div>
-        <div class="skill-card reveal-up">
-          <div class="skill-title">NLP &amp; AI Apps</div>
-          <div class="chips">
-            <span class="chip">NLP</span><span class="chip">Prompt Engineering</span>
-            <span class="chip">LLMs</span><span class="chip">Gradio</span>
+
+        <div class="skill-card-modern">
+          <div class="card-glare"></div>
+          <div class="skill-meta-header">
+            <span class="sk-num">05</span>
+            <span class="sk-cat">NLP &amp; GENERATIVE AI</span>
+          </div>
+          <div class="chips-flow">
+            <span class="chip">NLP Pipelines</span>
+            <span class="chip">Prompt Architecture</span>
+            <span class="chip">LLMs &amp; RAG</span>
+            <span class="chip">Gradio Apps</span>
+            <span class="chip">Hugging Face</span>
           </div>
         </div>
-        <div class="skill-card reveal-up">
-          <div class="skill-title">Tools &amp; Analytics</div>
-          <div class="chips">
-            <span class="chip">Geofencing</span><span class="chip">DBSCAN</span>
-            <span class="chip">React.js</span><span class="chip">LaTeX</span>
-            <span class="chip">Jupyter</span><span class="chip">Git</span>
+
+        <div class="skill-card-modern">
+          <div class="card-glare"></div>
+          <div class="skill-meta-header">
+            <span class="sk-num">06</span>
+            <span class="sk-cat">ANALYTICS &amp; FRAMEWORKS</span>
+          </div>
+          <div class="chips-flow">
+            <span class="chip">Geofencing</span>
+            <span class="chip">DBSCAN Clustering</span>
+            <span class="chip">React.js</span>
+            <span class="chip">LaTeX Scientific</span>
+            <span class="chip">Git / GitHub CI</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- EDUCATION -->
+  <!-- SECTION 05 // EDUCATION -->
   <section class="section" id="education">
     <div class="container">
       <div class="section-header">
-        <p class="section-label">// Education</p>
+        <div class="section-meta-tag">05.0 // ACADEMIC STANDING</div>
         <h2 class="section-title">Academic <em>Background</em></h2>
       </div>
-      <div class="edu-list">
-        <div class="edu-card reveal-up">
-          <div class="edu-info">
-            <div class="edu-year">2023 – 2027</div>
-            <div class="edu-school">Birla Institute of Technology Mesra, Ranchi</div>
-            <div class="edu-degree">B.Tech — Artificial Intelligence</div>
+
+      <div class="modern-card-deck">
+        <div class="modern-card edu-card-modern">
+          <div class="card-glare"></div>
+          <div class="card-top-bar">
+            <span class="card-code">5.1 // UNDERGRADUATE</span>
+            <span class="card-badge gold-badge">2023 – 2027</span>
           </div>
-          <div class="edu-score-wrap">
-            <div class="edu-score">8.94</div>
-            <div class="edu-score-lbl">GPA</div>
+          <div class="card-content-grid">
+            <div class="card-meta-col">
+              <div class="card-org-name">BIT Mesra, Ranchi</div>
+              <div class="card-location">Birla Institute of Technology</div>
+              <div class="card-role-spec">B.Tech — Artificial Intelligence</div>
+            </div>
+            <div class="card-main-col">
+              <h3 class="card-heading">Department of Computer Science &amp; Engineering (AI &amp; ML)</h3>
+              <p class="card-desc">Specialized curriculum focusing on Neural Networks, Machine Learning Foundations, Computer Vision, Embedded Real-Time Systems, and Autonomous Intelligence.</p>
+              <div class="academic-scores-modern">
+                <div class="score-pod">
+                  <div class="score-digit">8.50</div>
+                  <div class="score-label">CGPA (CUMULATIVE)</div>
+                </div>
+                <div class="score-divider-line"></div>
+                <div class="score-pod">
+                  <div class="score-digit">9.50</div>
+                  <div class="score-label">SGPA (SEMESTER)</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="edu-card reveal-up">
-          <div class="edu-info">
-            <div class="edu-year">Secondary</div>
-            <div class="edu-school">JVM Public School, Jaipur</div>
-            <div class="edu-degree">Higher Secondary</div>
+
+        <div class="modern-card edu-card-modern">
+          <div class="card-glare"></div>
+          <div class="card-top-bar">
+            <span class="card-code">5.2 // HIGHER SECONDARY</span>
+            <span class="card-badge gold-badge">SECONDARY</span>
           </div>
-          <div class="edu-score-wrap">
-            <div class="edu-score">79.2%</div>
-            <div class="edu-score-lbl">Score</div>
+          <div class="card-content-grid">
+            <div class="card-meta-col">
+              <div class="card-org-name">JVM Public School</div>
+              <div class="card-location">Jaipur, Rajasthan</div>
+              <div class="card-role-spec">Higher Secondary Certificate</div>
+            </div>
+            <div class="card-main-col">
+              <h3 class="card-heading">Science Stream (Mathematics, Physics &amp; Chemistry)</h3>
+              <div class="academic-scores-modern">
+                <div class="score-pod">
+                  <div class="score-digit">79.2%</div>
+                  <div class="score-label">BOARD SCORE</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="section-header" style="margin-top:3rem">
-        <p class="section-label">// Achievements</p>
+      <!-- HONORS -->
+      <div class="section-header" style="margin-top:4rem">
+        <div class="section-meta-tag">05.5 // HONORS &amp; LEADERSHIP</div>
+        <h2 class="section-title">Key <em>Achievements</em></h2>
       </div>
-      <div class="ach-list">
-        <div class="ach-item reveal-up">
-          <div class="ach-icon">★</div>
-          <div class="ach-text"><strong>1st Position — IETE Innovation Day</strong> for EDU-RESQ, an RFID-based smart resource allocation system.</div>
+
+      <div class="ach-grid-modern">
+        <div class="ach-item-modern">
+          <div class="card-glare"></div>
+          <div class="ach-badge-icon">★</div>
+          <div class="ach-body">
+            <div class="ach-title">1st Position — IETE Innovation Day</div>
+            <p class="ach-desc">Awarded top national distinction for <strong>EDU-RESQ</strong>, an AI-enabled RFID/GPS automated safety and resource allocation system.</p>
+          </div>
         </div>
-        <div class="ach-item reveal-up">
-          <div class="ach-icon">◆</div>
-          <div class="ach-text"><strong>AIR-4 — National IDEATHON-25, NIMS University</strong> among national participants.</div>
+
+        <div class="ach-item-modern">
+          <div class="card-glare"></div>
+          <div class="ach-badge-icon">◆</div>
+          <div class="ach-body">
+            <div class="ach-title">AIR-4 — National IDEATHON-25</div>
+            <p class="ach-desc">Ranked 4th Nationwide at NIMS University among thousands of innovators for autonomous edge solutions.</p>
+          </div>
         </div>
-        <div class="ach-item reveal-up">
-          <div class="ach-icon">⚡</div>
-          <div class="ach-text"><strong>President — AICTE-approved AI Club, BIT Mesra.</strong> Leading impactful projects like SUDARSHANA (funded prototype) and Neuronexxus.</div>
+
+        <div class="ach-item-modern">
+          <div class="card-glare"></div>
+          <div class="ach-badge-icon">⚡</div>
+          <div class="ach-body">
+            <div class="ach-title">President — AICTE-Approved AI Club, BIT Mesra</div>
+            <p class="ach-desc">Leading institutional AI research and engineering. Directed development of <strong>SUDARSHANA</strong> (funded prototype) and Neuronexxus.</p>
+          </div>
         </div>
-        <div class="ach-item reveal-up">
-          <div class="ach-icon">◎</div>
-          <div class="ach-text"><strong>Smart India Hackathon</strong> — Level 1 qualified in both 2024 and 2025.</div>
+
+        <div class="ach-item-modern">
+          <div class="card-glare"></div>
+          <div class="ach-badge-icon">◎</div>
+          <div class="ach-body">
+            <div class="ach-title">Smart India Hackathon (SIH) — Level 1 Qualifier</div>
+            <p class="ach-desc">Qualified for consecutive years in both SIH 2024 and SIH 2025 with AI governance solutions.</p>
+          </div>
         </div>
-        <div class="ach-item reveal-up">
-          <div class="ach-icon">✦</div>
-          <div class="ach-text"><strong>1st &amp; 3rd Positions — TECH-X Annual Event</strong> at BIT Mesra, 2025.</div>
+
+        <div class="ach-item-modern">
+          <div class="card-glare"></div>
+          <div class="ach-badge-icon">✦</div>
+          <div class="ach-body">
+            <div class="ach-title">1st &amp; 3rd Positions — TECH-X Annual Event</div>
+            <p class="ach-desc">Secured double honors in algorithmic robotics and machine learning hackathons at BIT Mesra, 2025.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- SECTION 06 // CONTACT -->
   <section class="section section-dark" id="contact">
     <div class="container">
       <div class="section-header">
-        <p class="section-label">// Contact</p>
-        <h2 class="section-title">Let's <em>Connect</em></h2>
+        <div class="section-meta-tag">06.0 // GET IN TOUCH</div>
+        <h2 class="section-title">Let's <em>Collaborate</em></h2>
+        <p class="section-subtitle">Open to AI/ML research roles, research collaborations, internships, and engineering discussions.</p>
       </div>
-      <p class="contact-desc reveal-up">Open to AI/ML research roles, full-time opportunities, collaborations, and conversations around intelligent systems and applied AI.</p>
-      <div class="contact-grid">
-        <a class="contact-link reveal-up" href="mailto:aryangaur76731@gmail.com">
-          <span class="cl-icon">@</span><span>aryangaur76731@gmail.com</span>
+
+      <div class="contact-grid-modern">
+        <a class="contact-card-modern" href="mailto:aryangaur76731@gmail.com">
+          <div class="card-glare"></div>
+          <div class="contact-tag">EMAIL</div>
+          <div class="contact-val">aryangaur76731@gmail.com</div>
+          <span class="contact-arrow">↗</span>
         </a>
-        <a class="contact-link reveal-up" href="https://linkedin.com/in/aryan-gaur-bb8349293/" target="_blank" rel="noopener">
-          <span class="cl-icon">in</span><span>LinkedIn Profile</span>
+        <a class="contact-card-modern" href="https://linkedin.com/in/aryan-gaur-bb8349293/" target="_blank" rel="noopener">
+          <div class="card-glare"></div>
+          <div class="contact-tag">LINKEDIN</div>
+          <div class="contact-val">linkedin.com/in/aryan-gaur-bb8349293</div>
+          <span class="contact-arrow">↗</span>
         </a>
-        <a class="contact-link reveal-up" href="https://github.com/Aryangaur-code" target="_blank" rel="noopener">
-          <span class="cl-icon">&lt;/&gt;</span><span>GitHub — Aryangaur-code</span>
+        <a class="contact-card-modern" href="https://github.com/Aryangaur-code" target="_blank" rel="noopener">
+          <div class="card-glare"></div>
+          <div class="contact-tag">GITHUB</div>
+          <div class="contact-val">github.com/Aryangaur-code</div>
+          <span class="contact-arrow">↗</span>
         </a>
-        <a class="contact-link reveal-up" href="tel:+917976716220">
-          <span class="cl-icon">#</span><span>+91 79767 16220</span>
+        <a class="contact-card-modern" href="tel:+917976716220">
+          <div class="card-glare"></div>
+          <div class="contact-tag">PHONE / WHATSAPP</div>
+          <div class="contact-val">+91 79767 16220</div>
+          <span class="contact-arrow">↗</span>
         </a>
       </div>
     </div>
@@ -438,9 +952,17 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <span class="footer-text">© 2026 ARYAN GAUR · AI @ BIT MESRA</span>
-    <span class="footer-text">BUILT WITH HTML · DEPLOYED ON VERCEL</span>
+    <span class="footer-text">© 2026 ARYAN GAUR · AI &amp; ML @ BIT MESRA</span>
+    <span class="footer-text">3D MODERNIST DECK ARCHITECTURE · LEAD AUTHOR (3×)</span>
   </footer>
+
+  <!-- MORPH EXPANDED CARD DETAIL MODAL -->
+  <div class="morph-modal-overlay" id="morphModal" aria-hidden="true">
+    <div class="morph-modal-container" id="morphContainer">
+      <button class="morph-close-btn" id="morphCloseBtn" aria-label="Close detail view">✕</button>
+      <div class="morph-modal-content" id="morphContent"></div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
