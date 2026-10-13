@@ -1,12 +1,12 @@
 /* =============================================
-   ARYAN GAUR — 3D MODERNIST PORTFOLIO
-   script.js — Three.js WebGL, 3D Deck & Morph Transitions
+   ARYAN GAUR — 3D CYBERNETIC AI-ML PORTFOLIO
+   script.js — Center 3D Neon Blue Core, 3D Rolling Wheel & Morph Transitions
    ============================================= */
 
 (function () {
   'use strict';
 
-  /* ── 1. CUSTOM CURSOR & CLICK RIPPLES ── */
+  /* ── 1. CYBERNETIC CURSOR & NEON SPARK BURSTS ── */
   const cursor     = document.getElementById('cursor');
   const cursorRing = document.getElementById('cursorRing');
 
@@ -28,34 +28,34 @@
       requestAnimationFrame(animateRing);
     })();
 
-    const hoverTargets = 'a, button, .modern-card, .skill-card-modern, .ach-item-modern, .contact-card-modern, .stat-block, .hero-3d-card';
+    const hoverTargets = 'a, button, .modern-card, .skill-card-modern, .ach-item-modern, .contact-card-modern, .hud-stat-box, .stage-frame, .wheel-hud-node';
     document.querySelectorAll(hoverTargets).forEach(el => {
       el.addEventListener('mouseenter', () => cursorRing.classList.add('hovering'));
       el.addEventListener('mouseleave', () => cursorRing.classList.remove('hovering'));
     });
 
-    // 3D Click Spark Effect
+    // 3D Neon Blue Click Spark Effect
     document.addEventListener('click', (e) => {
       const spark = document.createElement('div');
       spark.className = 'cursor-spark';
       spark.style.cssText = `
         position: fixed; left: ${e.clientX}px; top: ${e.clientY}px;
         width: 6px; height: 6px; border-radius: 50%;
-        background: var(--gold); pointer-events: none; z-index: 9997;
+        background: var(--neon-blue); pointer-events: none; z-index: 9997;
         transform: translate(-50%, -50%) scale(1);
-        box-shadow: 0 0 14px var(--gold);
+        box-shadow: 0 0 16px var(--neon-blue), 0 0 28px var(--neon-azure);
         transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.45s ease-out;
       `;
       document.body.appendChild(spark);
       requestAnimationFrame(() => {
-        spark.style.transform = 'translate(-50%, -50%) scale(4.5)';
+        spark.style.transform = 'translate(-50%, -50%) scale(5)';
         spark.style.opacity = '0';
       });
       setTimeout(() => spark.remove(), 450);
     });
   }
 
-  /* ── 2. THREE.JS 3D AMBIENT BACKGROUND (NEURAL NETWORK CONSTELLATION) ── */
+  /* ── 2. THREE.JS 3D AMBIENT BACKGROUND (NEON BLUE NEURAL MESH) ── */
   const bgCanvas = document.getElementById('bg-canvas');
   if (bgCanvas && typeof THREE !== 'undefined') {
     const scene = new THREE.Scene();
@@ -77,7 +77,7 @@
     const positions = new Float32Array(particleCount * 3);
     const velocities = [];
 
-    const spreadX = 75, spreadY = 55, spreadZ = 35;
+    const spreadX = 80, spreadY = 60, spreadZ = 35;
     for (let i = 0; i < particleCount; i++) {
       positions[i * 3]     = (Math.random() - 0.5) * spreadX;
       positions[i * 3 + 1] = (Math.random() - 0.5) * spreadY;
@@ -91,14 +91,14 @@
     }
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-    // Circle Sprite Material for Golden Glowing Nodes
+    // Circle Sprite Material in Neon Cyan
     const canvasPoint = document.createElement('canvas');
     canvasPoint.width = 32; canvasPoint.height = 32;
     const ctx = canvasPoint.getContext('2d');
     const grad = ctx.createRadialGradient(16, 16, 2, 16, 16, 16);
-    grad.addColorStop(0, 'rgba(200, 169, 110, 1)');
-    grad.addColorStop(0.5, 'rgba(200, 169, 110, 0.5)');
-    grad.addColorStop(1, 'rgba(200, 169, 110, 0)');
+    grad.addColorStop(0, 'rgba(0, 243, 255, 1)');
+    grad.addColorStop(0.5, 'rgba(0, 119, 255, 0.6)');
+    grad.addColorStop(1, 'rgba(0, 243, 255, 0)');
     ctx.fillStyle = grad;
     ctx.beginPath();
     ctx.arc(16, 16, 16, 0, Math.PI * 2);
@@ -115,7 +115,7 @@
     const particleSystem = new THREE.Points(geometry, particleMaterial);
     scene.add(particleSystem);
 
-    // Dynamic Synaptic Lines
+    // Dynamic Synaptic Lines in Cyan Blue
     const maxConnections = particleCount * (particleCount - 1);
     const linePositions = new Float32Array(maxConnections * 3);
     const lineColors    = new Float32Array(maxConnections * 3);
@@ -148,7 +148,6 @@
     }, { passive: true });
 
     // Animation Loop
-    let bgAnimFrameId;
     let isTabVisible = true;
     document.addEventListener('visibilitychange', () => {
       isTabVisible = !document.hidden;
@@ -165,14 +164,12 @@
         pos[i * 3 + 1] += velocities[i].y;
         pos[i * 3 + 2] += velocities[i].z;
 
-        // Bounce within 3D boundary
         if (Math.abs(pos[i * 3])     > spreadX / 2) velocities[i].x *= -1;
         if (Math.abs(pos[i * 3 + 1]) > spreadY / 2) velocities[i].y *= -1;
         if (Math.abs(pos[i * 3 + 2]) > spreadZ / 2) velocities[i].z *= -1;
       }
       geometry.attributes.position.needsUpdate = true;
 
-      // Update lines between nearby nodes
       let lineIndex = 0;
       let colorIndex = 0;
       for (let i = 0; i < particleCount; i++) {
@@ -191,7 +188,8 @@
             linePositions[lineIndex++] = pos[j * 3 + 1];
             linePositions[lineIndex++] = pos[j * 3 + 2];
 
-            const r = 0.78 * alpha, g = 0.66 * alpha, b = 0.43 * alpha;
+            // Neon Blue RGB: (0, 0.95*alpha, 1.0*alpha)
+            const r = 0.0, g = 0.95 * alpha, b = 1.0 * alpha;
             lineColors[colorIndex++] = r; lineColors[colorIndex++] = g; lineColors[colorIndex++] = b;
             lineColors[colorIndex++] = r; lineColors[colorIndex++] = g; lineColors[colorIndex++] = b;
           }
@@ -201,13 +199,12 @@
       lineGeometry.attributes.position.needsUpdate = true;
       lineGeometry.attributes.color.needsUpdate = true;
 
-      // Smooth camera lerp
       camera.position.x += (targetCameraX - camera.position.x) * 0.035;
       camera.position.y += ((targetCameraY - scrollYOffset) - camera.position.y) * 0.035;
       camera.lookAt(0, -scrollYOffset * 0.5, 0);
 
       renderer.render(scene, camera);
-      bgAnimFrameId = requestAnimationFrame(animateBg);
+      requestAnimationFrame(animateBg);
     }
     animateBg();
 
@@ -218,78 +215,81 @@
     });
   }
 
-  /* ── 3. HERO 3D INTERACTIVE AI CORE ── */
+  /* ── 3. HERO CENTER STAGE 3D NEON BLUE NEURAL CORE ── */
   const hero3dContainer = document.getElementById('hero3dCanvas');
   if (hero3dContainer && typeof THREE !== 'undefined') {
-    const width  = hero3dContainer.clientWidth || 200;
-    const height = hero3dContainer.clientHeight || 160;
+    const width  = hero3dContainer.clientWidth || 400;
+    const height = hero3dContainer.clientHeight || 280;
 
     const sceneHero = new THREE.Scene();
     const cameraHero = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-    cameraHero.position.z = 4.8;
+    cameraHero.position.z = 4.6;
 
     const rendererHero = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     rendererHero.setSize(width, height);
     rendererHero.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     hero3dContainer.appendChild(rendererHero.domElement);
 
-    // Lighting
-    const ambLight = new THREE.AmbientLight(0xfff3d6, 0.9);
+    // Cyan Ambient & Directional Lighting
+    const ambLight = new THREE.AmbientLight(0x00f3ff, 0.85);
     sceneHero.add(ambLight);
-    const dirLight = new THREE.DirectionalLight(0xc8a96e, 2.2);
+    const dirLight = new THREE.DirectionalLight(0x00f3ff, 2.5);
     dirLight.position.set(5, 5, 5);
     sceneHero.add(dirLight);
+    const bluePointLight = new THREE.PointLight(0x0077ff, 3.0, 10);
+    bluePointLight.position.set(-3, -3, 2);
+    sceneHero.add(bluePointLight);
 
-    // 3D AI Core Group
+    // 3D Core Group
     const coreGroup = new THREE.Group();
     sceneHero.add(coreGroup);
 
-    // 1. Outer Icosahedron Wireframe
-    const icoGeo = new THREE.IcosahedronGeometry(1.3, 1);
+    // 1. Outer Icosahedron Wireframe in Electric Neon Blue
+    const icoGeo = new THREE.IcosahedronGeometry(1.35, 1);
     const icoMat = new THREE.MeshBasicMaterial({
-      color: 0xc8a96e,
+      color: 0x00f3ff,
       wireframe: true,
       transparent: true,
-      opacity: 0.5
+      opacity: 0.65
     });
     const icoMesh = new THREE.Mesh(icoGeo, icoMat);
     coreGroup.add(icoMesh);
 
-    // 2. Vertex Nodes on Icosahedron
+    // 2. Vertex Node Points on Icosahedron
     const vertexPositions = icoGeo.attributes.position;
     const vertexPointsGeo = new THREE.BufferGeometry();
     vertexPointsGeo.setAttribute('position', vertexPositions);
     const vertexPointsMat = new THREE.PointsMaterial({
-      color: 0xffe6ab,
-      size: 0.12,
+      color: 0x80f9ff,
+      size: 0.14,
       transparent: true,
-      opacity: 0.9
+      opacity: 0.95
     });
     const vertexPoints = new THREE.Points(vertexPointsGeo, vertexPointsMat);
     coreGroup.add(vertexPoints);
 
-    // 3. Glowing Inner Crystalline Core
-    const innerGeo = new THREE.DodecahedronGeometry(0.72);
+    // 3. Glowing Inner Crystalline Dodecahedron Core in Deep Neon Azure
+    const innerGeo = new THREE.DodecahedronGeometry(0.74);
     const innerMat = new THREE.MeshStandardMaterial({
-      color: 0xc8a96e,
-      roughness: 0.25,
-      metalness: 0.85,
-      emissive: 0x3d3015,
+      color: 0x0077ff,
+      roughness: 0.2,
+      metalness: 0.9,
+      emissive: 0x003366,
       wireframe: false
     });
     const innerMesh = new THREE.Mesh(innerGeo, innerMat);
     coreGroup.add(innerMesh);
 
-    // 4. Orbiting Rings
-    const ring1Geo = new THREE.TorusGeometry(1.68, 0.016, 8, 64);
-    const ringMat = new THREE.MeshBasicMaterial({ color: 0xc8a96e, transparent: true, opacity: 0.75 });
+    // 4. Orbiting Multi-Axis Cybernetic Rings
+    const ring1Geo = new THREE.TorusGeometry(1.72, 0.018, 8, 64);
+    const ringMat = new THREE.MeshBasicMaterial({ color: 0x00f3ff, transparent: true, opacity: 0.8 });
     const ring1 = new THREE.Mesh(ring1Geo, ringMat);
     ring1.rotation.x = Math.PI / 3;
     ring1.rotation.y = Math.PI / 6;
     coreGroup.add(ring1);
 
-    const ring2Geo = new THREE.TorusGeometry(1.95, 0.012, 8, 64);
-    const ring2Mat = new THREE.MeshBasicMaterial({ color: 0xd9be88, transparent: true, opacity: 0.5 });
+    const ring2Geo = new THREE.TorusGeometry(2.0, 0.014, 8, 64);
+    const ring2Mat = new THREE.MeshBasicMaterial({ color: 0x0099ff, transparent: true, opacity: 0.55 });
     const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
     ring2.rotation.x = -Math.PI / 4;
     ring2.rotation.y = Math.PI / 4;
@@ -363,7 +363,49 @@
     });
   }
 
-  /* ── 4. 3D DECK CASCADE & PERSPECTIVE STACKING ── */
+  /* ── 4. 3D ROLLING CARD WHEEL ON SCROLL ── */
+  const wheelSections = document.querySelectorAll('.wheel-card-section');
+  const wheelDial     = document.getElementById('wheelDial');
+  const hudNodes      = document.querySelectorAll('.wheel-hud-node');
+
+  function updateRollingWheel() {
+    const vh = window.innerHeight;
+    const centerY = vh / 2;
+
+    wheelSections.forEach((section, idx) => {
+      const rect = section.getBoundingClientRect();
+      const secCenterY = rect.top + rect.height / 2;
+      const distFromCenter = secCenterY - centerY;
+
+      // Cylindrical 3D pitch angle (clamped between -26deg and 26deg)
+      const maxAngle = 26;
+      const angle = Math.max(-maxAngle, Math.min(maxAngle, (distFromCenter / vh) * 32));
+      const zOffset = -Math.abs(distFromCenter) * 0.12;
+      const opacity = 1 - Math.min(0.45, Math.abs(distFromCenter) / (vh * 1.6));
+
+      section.style.setProperty('--wheel-rot', `${angle}deg`);
+      section.style.setProperty('--wheel-z', `${zOffset}px`);
+      section.style.opacity = opacity.toFixed(2);
+      section.classList.add('rolling-wheel-active');
+
+      // Update active gauge indicator if section is in prime view
+      if (Math.abs(distFromCenter) < rect.height / 2) {
+        if (wheelDial) {
+          const displayIdx = String(idx + 1).padStart(2, '0');
+          wheelDial.textContent = `${displayIdx}/07`;
+        }
+        hudNodes.forEach((node, nodeIdx) => {
+          node.classList.toggle('active', nodeIdx === idx);
+        });
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateRollingWheel, { passive: true });
+  window.addEventListener('resize', updateRollingWheel);
+  updateRollingWheel();
+
+  /* ── 5. 3D DECK VIEW TOGGLE ── */
   const decks = document.querySelectorAll('.modern-card-deck');
   decks.forEach(deck => {
     const cards = deck.querySelectorAll('.modern-card');
@@ -380,17 +422,17 @@
       deckModeToggle.classList.toggle('active', isDeckMode);
       deckModeToggle.innerHTML = isDeckMode
         ? '<span class="mode-icon">▥</span> GRID VIEW'
-        : '<span class="mode-icon">⬚</span> 3D DECK VIEW';
+        : '<span class="mode-icon">◎</span> 3D CARD WHEEL';
 
       decks.forEach(deck => deck.classList.toggle('deck-active', isDeckMode));
     });
   }
 
-  /* ── 5. 3D CARD PERSPECTIVE TILT & SPECULAR GLARE ── */
-  const cardsToTilt = document.querySelectorAll('.modern-card, .skill-card-modern, .ach-item-modern, .contact-card-modern');
+  /* ── 6. 3D CARD PERSPECTIVE TILT & SPECULAR GLARE ── */
+  const cardsToTilt = document.querySelectorAll('.modern-card, .skill-card-modern, .ach-item-modern, .contact-card-modern, .bit-image-container');
   cardsToTilt.forEach(card => {
     card.addEventListener('mousemove', (e) => {
-      if (card.closest('.deck-active')) return; // Allow deck CSS transforms in deck mode
+      if (card.closest('.deck-active')) return;
 
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
@@ -406,7 +448,7 @@
       const glare = card.querySelector('.card-glare');
       if (glare) {
         glare.style.opacity = '1';
-        glare.style.background = `radial-gradient(circle 220px at ${x}px ${y}px, rgba(200, 169, 110, 0.22), transparent 75%)`;
+        glare.style.background = `radial-gradient(circle 220px at ${x}px ${y}px, rgba(0, 243, 255, 0.22), transparent 75%)`;
       }
     });
 
@@ -418,7 +460,7 @@
     });
   });
 
-  /* ── 6. MORPH DETAIL MODAL CONTROLLER ── */
+  /* ── 7. MORPH DETAIL MODAL CONTROLLER ── */
   const morphModal     = document.getElementById('morphModal');
   const morphContent   = document.getElementById('morphContent');
   const morphCloseBtn  = document.getElementById('morphCloseBtn');
@@ -426,39 +468,49 @@
   function openCardMorph(card) {
     if (!morphModal || !morphContent) return;
 
-    // Extract card contents
     const topBar = card.querySelector('.card-top-bar');
-    const heading = card.querySelector('.card-heading');
+    const heading = card.querySelector('.card-heading, .card-org-name');
     const orgName = card.querySelector('.card-org-name, .card-title-code, .venue-pill');
-    const kpiBox = card.querySelector('.card-kpi-box');
     const bullets = card.querySelector('.card-bullets');
     const abstract = card.querySelector('.pub-abstract, .card-desc');
     const methodGrid = card.querySelector('.pub-method-grid');
     const tagRow = card.querySelector('.card-tag-row');
     const authBox = card.querySelector('.auth-box');
+    const bitCampus = card.querySelector('.bit-campus-img');
 
     let expandedHtml = `
-      <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(200,169,110,0.25); padding-bottom:1rem; margin-bottom:1.5rem;">
+      <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(0,243,255,0.25); padding-bottom:1rem; margin-bottom:1.5rem;">
         <div>
-          <span style="font-family:'DM Mono',monospace; font-size:9px; color:var(--gold); letter-spacing:.16em; text-transform:uppercase;">
-            ${topBar ? topBar.querySelector('.card-code').textContent : 'ARCHITECTURE VIEW'}
+          <span style="font-family:'DM Mono',monospace; font-size:9px; color:var(--neon-blue); letter-spacing:.16em; text-transform:uppercase;">
+            ${topBar ? topBar.querySelector('.card-code').textContent : 'TECHNICAL TELEMETRY'}
           </span>
-          <h2 style="font-family:'DM Serif Display',serif; font-size:2rem; color:#f5f2eb; margin-top:4px; line-height:1.2;">
-            ${heading ? heading.textContent : (orgName ? orgName.textContent : 'Technical Specification')}
+          <h2 style="font-family:'DM Serif Display',serif; font-size:2rem; color:#ffffff; margin-top:4px; line-height:1.2;">
+            ${heading ? heading.textContent : (orgName ? orgName.textContent : 'Architecture Breakdown')}
           </h2>
         </div>
       </div>
     `;
 
+    if (bitCampus) {
+      expandedHtml += `
+        <div style="margin-bottom:1.5rem; border-radius:14px; overflow:hidden; border:1px solid var(--neon-blue-border); box-shadow:0 0 20px rgba(0,243,255,0.2);">
+          <img src="bit_mesra.png" alt="BIT Mesra Campus" style="width:100%; height:260px; object-fit:cover; display:block;" />
+          <div style="padding:10px 14px; background:rgba(5,5,8,0.9); font-family:'DM Mono',monospace; font-size:8px; color:var(--neon-blue);">
+            ✦ BIRLA INSTITUTE OF TECHNOLOGY, MESRA · MAIN ACADEMIC BUILDING &amp; RESEARCH CAMPUS
+          </div>
+        </div>
+      `;
+    }
+
     if (authBox) {
       expandedHtml += `
-        <div style="background:rgba(200,169,110,0.1); border:1px solid var(--gold); border-radius:10px; padding:12px 18px; margin-bottom:1.5rem; display:flex; align-items:center; justify-content:space-between;">
+        <div style="background:rgba(0,243,255,0.08); border:1px solid var(--neon-blue); border-radius:10px; padding:12px 18px; margin-bottom:1.5rem; display:flex; align-items:center; justify-content:space-between;">
           <div>
-            <span style="font-family:'DM Mono',monospace; font-size:8px; color:var(--gold); letter-spacing:.12em;">PEER-REVIEWED STATUS:</span>
-            <div style="font-size:13px; color:#fff; font-weight:600; margin-top:2px;">Aryan Gaur (Lead Author &amp; Primary Researcher)</div>
+            <span style="font-family:'DM Mono',monospace; font-size:8px; color:var(--neon-blue); letter-spacing:.12em;">PEER-REVIEWED STATUS:</span>
+            <div style="font-size:13px; color:#ffffff; font-weight:600; margin-top:2px;">Aryan Gaur (Lead Author &amp; Primary Researcher)</div>
           </div>
-          <span style="font-family:'DM Mono',monospace; font-size:8.5px; background:var(--gold); color:#14130e; padding:4px 10px; border-radius:99px; font-weight:700;">
-            OFFICIAL PAPER
+          <span style="font-family:'DM Mono',monospace; font-size:8.5px; background:var(--neon-blue); color:#050508; padding:4px 10px; border-radius:99px; font-weight:700;">
+            VERIFIED PAPER
           </span>
         </div>
       `;
@@ -467,8 +519,8 @@
     if (methodGrid) {
       expandedHtml += `
         <div style="margin-bottom:1.5rem;">
-          <span style="font-family:'DM Mono',monospace; font-size:8px; color:var(--dim-dark); letter-spacing:.12em; text-transform:uppercase; display:block; margin-bottom:8px;">
-            METHODOLOGY BENCHMARKS
+          <span style="font-family:'DM Mono',monospace; font-size:8px; color:var(--ink-dim); letter-spacing:.12em; text-transform:uppercase; display:block; margin-bottom:8px;">
+            MODEL INFERENCE &amp; BENCHMARKS
           </span>
           ${methodGrid.outerHTML}
         </div>
@@ -478,8 +530,8 @@
     if (abstract) {
       expandedHtml += `
         <div style="margin-bottom:1.5rem;">
-          <span style="font-family:'DM Mono',monospace; font-size:8px; color:var(--dim-dark); letter-spacing:.12em; text-transform:uppercase; display:block; margin-bottom:8px;">
-            TECHNICAL ABSTRACT &amp; ARCHITECTURE
+          <span style="font-family:'DM Mono',monospace; font-size:8px; color:var(--ink-dim); letter-spacing:.12em; text-transform:uppercase; display:block; margin-bottom:8px;">
+            TECHNICAL ARCHITECTURE ABSTRACT
           </span>
           <p style="font-size:13.5px; color:#c5bcac; line-height:1.8; font-weight:300;">
             ${abstract.innerHTML}
@@ -491,8 +543,8 @@
     if (bullets) {
       expandedHtml += `
         <div style="margin-bottom:1.5rem;">
-          <span style="font-family:'DM Mono',monospace; font-size:8px; color:var(--dim-dark); letter-spacing:.12em; text-transform:uppercase; display:block; margin-bottom:8px;">
-            ENGINEERING DELIVERABLES &amp; IMPACT
+          <span style="font-family:'DM Mono',monospace; font-size:8px; color:var(--ink-dim); letter-spacing:.12em; text-transform:uppercase; display:block; margin-bottom:8px;">
+            SYSTEM IMPLEMENTATION &amp; BENCHMARKS
           </span>
           <ul style="list-style:none; padding-left:0;">
             ${bullets.innerHTML}
@@ -504,8 +556,8 @@
     if (tagRow) {
       expandedHtml += `
         <div style="margin-top:1.5rem; padding-top:1.2rem; border-top:1px solid rgba(255,255,255,0.06);">
-          <span style="font-family:'DM Mono',monospace; font-size:8px; color:var(--dim-dark); letter-spacing:.12em; text-transform:uppercase; display:block; margin-bottom:8px;">
-            SYSTEM KEYWORDS &amp; STACK
+          <span style="font-family:'DM Mono',monospace; font-size:8px; color:var(--ink-dim); letter-spacing:.12em; text-transform:uppercase; display:block; margin-bottom:8px;">
+            TECHNOLOGY STACK
           </span>
           ${tagRow.outerHTML}
         </div>
@@ -541,7 +593,7 @@
     }
   });
 
-  /* ── 7. STAT COUNTER ANIMATION (CGPA 8.50 & SGPA 9.50) ── */
+  /* ── 8. STAT COUNTER ANIMATION (CGPA 8.50 & SGPA 9.50) ── */
   function animateCounter(el, target, suffix, decimals) {
     const duration = 1350;
     const startTime = performance.now();
@@ -555,7 +607,7 @@
     })(performance.now());
   }
 
-  document.querySelectorAll('.stat-num, .score-digit').forEach(el => {
+  document.querySelectorAll('.hud-stat-num, .score-digit').forEach(el => {
     new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
@@ -569,17 +621,17 @@
     }, { threshold: 0.5 }).observe(el);
   });
 
-  /* ── 8. NAV SCROLL ── */
+  /* ── 9. NAV SCROLL ── */
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     if (nav) {
       nav.style.background = window.scrollY > 60
-        ? 'rgba(20, 19, 14, 0.98)'
-        : 'rgba(20, 19, 14, 0.94)';
+        ? 'rgba(5, 5, 8, 0.98)'
+        : 'rgba(5, 5, 8, 0.94)';
     }
   }, { passive: true });
 
-  /* ── 9. MOBILE MENU ── */
+  /* ── 10. MOBILE MENU ── */
   const menuBtn    = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
 
@@ -599,24 +651,7 @@
     document.querySelectorAll('.mm-link').forEach(l => l.addEventListener('click', closeMenu));
   }
 
-  /* ── 10. SCROLL REVEAL ── */
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !entry.target.closest('.hero')) {
-        entry.target.style.animationPlayState = 'running';
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.reveal-up').forEach(el => {
-    if (!el.closest('.hero')) {
-      el.style.animationPlayState = 'paused';
-      revealObserver.observe(el);
-    }
-  });
-
-  /* ── 11. ACTIVE NAV ── */
+  /* ── 11. ACTIVE NAV HIGHLIGHT ── */
   const sections   = document.querySelectorAll('section[id]');
   const navAnchors = document.querySelectorAll('.nav-links a');
 
@@ -625,8 +660,7 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           navAnchors.forEach(a => {
-            a.style.color = a.getAttribute('href') === '#' + entry.target.id
-              ? 'var(--gold)' : '';
+            a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
           });
         }
       });
