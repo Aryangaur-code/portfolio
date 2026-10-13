@@ -230,7 +230,39 @@ body.apple-theme {
   width: 100%;
 }
 
-/* LEFT: DATA */
+/* LEFT: DATA & LEFT-TO-RIGHT ENTRANCE ANIMATIONS */
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-left {
+  opacity: 0;
+  animation: slideInLeft 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.14s;
+}
+
+.delay-2 {
+  animation-delay: 0.28s;
+}
+
+.delay-3 {
+  animation-delay: 0.42s;
+}
+
+.delay-4 {
+  animation-delay: 0.56s;
+}
+
 .home-data {
   display: flex;
   flex-direction: column;
@@ -309,10 +341,10 @@ body.apple-theme {
 
 .profile-glow {
   position: absolute;
-  width: 320px;
-  height: 420px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
-  filter: blur(40px);
+  width: 360px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(0, 180, 255, 0.04) 40%, transparent 70%);
+  filter: blur(45px);
   z-index: 1;
 }
 
@@ -323,15 +355,16 @@ body.apple-theme {
   max-width: 340px;
   border-radius: 28px;
   overflow: hidden;
-  border: 1px solid var(--border-subtle);
-  background: #111115;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 255, 255, 0.03);
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #000000;
+  box-shadow: 0 30px 80px -10px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 255, 255, 0.03);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.35s ease;
 }
 
 .profile-frame:hover {
-  transform: translateY(-4px);
-  border-color: var(--border-hover);
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 35px 90px -10px rgba(0, 0, 0, 1), 0 0 50px rgba(255, 255, 255, 0.08);
 }
 
 .home-profile-img {
@@ -339,12 +372,13 @@ body.apple-theme {
   height: auto;
   display: block;
   object-fit: cover;
+  background: #000000;
 }
 
 .profile-gradient-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 75%, rgba(0, 0, 0, 0.75) 100%);
+  background: linear-gradient(180deg, transparent 70%, rgba(0, 0, 0, 0.85) 100%);
   pointer-events: none;
 }
 
@@ -560,8 +594,43 @@ body.apple-theme {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 1.25rem;
+  margin-bottom: 1.2rem;
+}
+
+.exp-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.exp-logo-wrap {
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
+  flex-shrink: 0;
+}
+
+.exp-card:hover .exp-logo-wrap {
+  transform: scale(1.06);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.55);
+}
+
+.exp-logo-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .exp-timeline {
@@ -619,6 +688,46 @@ body.apple-theme {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-subtle);
   color: var(--text-sub);
+}
+
+.exp-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.exp-site-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 6px 14px;
+  border-radius: 99px;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: 0.02em;
+}
+
+.exp-site-btn:hover {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.15);
+}
+
+.exp-site-btn i {
+  font-size: 12px;
 }
 
 /* ═════════════════════════════════════════════════════════════════
@@ -867,33 +976,39 @@ body.apple-theme {
   gap: 2.5rem;
   align-items: center;
   background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 26px;
   padding: 2.2rem;
-  transition: border-color 0.25s;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .bit-campus-card:hover {
-  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 40px rgba(255, 255, 255, 0.03);
 }
 
 .bit-img-wrapper {
   position: relative;
-  border-radius: 18px;
+  border-radius: 20px;
   overflow: hidden;
-  border: 1px solid var(--border-subtle);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #0e0e12;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
 }
 
 .bit-photo {
   width: 100%;
-  height: 280px;
+  height: 290px;
   object-fit: cover;
   display: block;
+  background: #0e0e12;
   transition: transform 0.4s ease;
 }
 
 .bit-campus-card:hover .bit-photo {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 .bit-photo-badge {
@@ -1252,5 +1367,18 @@ body.apple-theme {
   .scores-container {
     width: 100%;
     justify-content: space-around;
+  }
+  .exp-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.85rem;
+  }
+  .exp-header-left {
+    gap: 1rem;
+  }
+  .exp-logo-wrap {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
   }
 }
