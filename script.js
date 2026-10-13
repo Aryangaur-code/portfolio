@@ -191,7 +191,7 @@
         const text = el.textContent.trim();
         if (text === '8.50' || text === '8.94') animateCounter(el, 8.50, '', 2);
         else if (text === '9.50') animateCounter(el, 9.50, '', 2);
-        else if (text === '5×')   animateCounter(el, 5,    '×', 0);
+        else if (text === '7×' || text === '5×') animateCounter(el, 7, '×', 0);
         else if (text === '3×')   animateCounter(el, 3,    '×', 0);
         obs.unobserve(el);
       });
