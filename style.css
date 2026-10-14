@@ -1409,6 +1409,9 @@ body.apple-theme {
   justify-content: space-between;
   transition: all 0.25s ease;
   position: relative;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .testimonial-card:hover {
@@ -1418,10 +1421,51 @@ body.apple-theme {
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
 }
 
+.testimonial-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
 .testimonial-quote-icon {
   font-size: 26px;
   color: rgba(255, 255, 255, 0.25);
-  margin-bottom: 1rem;
+  margin-bottom: 0;
+}
+
+.testimonial-mail-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  padding: 3px 10px;
+  border-radius: 99px;
+  transition: all 0.2s ease;
+}
+
+.testimonial-card:hover .testimonial-mail-badge {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.testimonial-author-arrow {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-left: 4px;
+  transition: transform 0.2s ease, color 0.2s ease;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.testimonial-card:hover .testimonial-author-arrow {
+  color: #ffffff;
+  transform: translate(2px, -2px);
 }
 
 .testimonial-text {
